@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console // Shreya Tadakala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Fira Code', monospace; background-color: #050505; color: #10b981; }
+        .border-cyber { border: 1px solid #064e3b; }
+        .bg-glass { background: rgba(16, 185, 129, 0.03); backdrop-filter: blur(4px); }
+        .scanline {
+            width: 100%; height: 2px; background: rgba(16, 185, 129, 0.1);
+            position: fixed; top: 0; left: 0; pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+        .terminal-text::before { content: "> "; color: #10b981; }
+        .project-link { transition: all 0.3s ease; text-decoration: none; display: block; }
+        .project-link:hover { color: #ffffff; text-shadow: 0 0 10px #10b981; transform: translateX(5px); }
+    </style>
+</head>
+<body class="p-4 lg:p-8">
+    <div class="scanline"></div>
+
+    <nav class="flex flex-wrap justify-between items-center border-cyber p-4 mb-6 bg-glass">
+        <div class="flex items-center gap-4">
+            <span class="animate-pulse text-red-500 text-sm">● SESSION_ACTIVE</span>
+            [cite_start]<h1 class="font-bold tracking-widest uppercase">Shreya_Tadakala_v1.0 [cite: 1]</h1>
+        </div>
+        <div class="text-xs text-emerald-700 hidden md:block">
+            [cite_start]STATUS: FINAL_YEAR_BE [cite: 4, 35] | [cite_start]GRAD: Jun_2026 [cite: 44]
+        </div>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <aside class="lg:col-span-3 space-y-6">
+            <div class="border-cyber p-4 bg-glass">
+                <h2 class="text-xs font-bold mb-4 opacity-50 uppercase tracking-tighter">// USER_IDENT</h2>
+                <p class="text-sm leading-relaxed mb-4">
+                    [cite_start]Aspiring Cybersecurity professional focused on Penetration Testing and Incident Response. [cite: 4, 6]
+                </p>
+                <div class="space-y-2 text-[11px]">
+                    [cite_start]<p class="terminal-text truncate"><a href="mailto:tadakalashreya@email.com" class="hover:text-white">tadakalashreya@email.com [cite: 2]</a></p>
+                    [cite_start]<p class="terminal-text">+91-8247390896 [cite: 2]</p>
+                    [cite_start]<p class="terminal-text"><a href="https://github.com/Shreya202005" target="_blank" class="hover:text-white">github/Shreya202005 [cite: 2]</a></p>
+                </div>
+            </div>
+
+            <div class="border-cyber p-4 bg-glass">
+                <h2 class="text-xs font-bold mb-4 opacity-50 uppercase tracking-tighter">// SKILL_MATRIX</h2>
+                <div class="flex flex-wrap gap-2 text-[9px]">
+                    [cite_start]<span class="border border-emerald-900 px-2 py-1">BURP_SUITE [cite: 9]</span>
+                    [cite_start]<span class="border border-emerald-900 px-2 py-1">METASPLOIT [cite: 9]</span>
+                    [cite_start]<span class="border border-emerald-900 px-2 py-1">NMAP [cite: 9]</span>
+                    [cite_start]<span class="border border-emerald-900 px-2 py-1">WIRESHARK [cite: 9]</span>
+                    [cite_start]<span class="border border-emerald-900 px-2 py-1">PYTHON [cite: 9]</span>
+                    [cite_start]<span class="border border-emerald-900 px-2 py-1">AWS/AZURE [cite: 9]</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="lg:col-span-6 space-y-6">
+            <section class="border-cyber p-6 relative">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span> Projects
+                </h2>
+
+                <div class="space-y-8">
+                    <div class="group border-l-2 border-emerald-900 pl-4 hover:border-emerald-500 transition-colors">
+                        <a href="https://github.com/Shreya202005/Web-Pentesting-Toolkit" target="_blank" class="project-link">
+                            <h3 class="font-bold text-lg italic">Web App Pentesting Toolkit <span class="text-xs opacity-50">↗</span></h3>
+                        </a>
+                        [cite_start]<p class="text-sm text-emerald-700 my-2">Built a Flask-based pentesting interface for vulnerability scanning with automated logging and reporting. [cite: 13, 15]</p>
+                        [cite_start]<span class="text-[10px] bg-emerald-950 px-2 py-1 uppercase">Jun 2025 - Aug 2025 [cite: 14]</span>
+                    </div>
+
+                    <div class="group border-l-2 border-emerald-900 pl-4 hover:border-emerald-500 transition-colors">
+                        <a href="https://github.com/Shreya202005/Dos-Detection" target="_blank" class="project-link">
+                            <h3 class="font-bold text-lg italic">DoS Detection System <span class="text-xs opacity-50">↗</span></h3>
+                        </a>
+                        [cite_start]<p class="text-sm text-emerald-700 my-2">ML-based detection for Denial-of-Service patterns using network anomaly detection techniques. [cite: 16, 18]</p>
+                        [cite_start]<span class="text-[10px] bg-emerald-950 px-2 py-1 uppercase">Sep 2024 - Nov 2024 [cite: 17]</span>
+                    </div>
+
+                    <div class="group border-l-2 border-emerald-900 pl-4 hover:border-emerald-500 transition-colors">
+                        <a href="https://github.com/Shreya202005/Cloud-Security-Posture-Management" target="_blank" class="project-link">
+                            <h3 class="font-bold text-lg italic">Cloud Security Posture Management <span class="text-xs opacity-50">↗</span></h3>
+                        </a>
+                        [cite_start]<p class="text-sm text-emerald-700 my-2">Python/React tool for visualizing cloud misconfigurations with real-time Spark analytics. [cite: 19, 21]</p>
+                        [cite_start]<span class="text-[10px] bg-emerald-950 px-2 py-1 uppercase">Feb 2024 - Mar 2024 [cite: 20]</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="lg:col-span-3 space-y-6">
+            <div class="border-cyber p-4 bg-glass">
+                <h2 class="text-xs font-bold mb-4 opacity-50 uppercase tracking-tighter">// RESEARCH_PUB</h2>
+                <div class="text-xs">
+                    [cite_start]<p class="font-bold mb-1 underline">Wireless Hacking Research [cite: 23]</p>
+                    [cite_start]<p class="text-emerald-700">8-page paper on wireless hacking techniques, risks, and countermeasures. [cite: 25]</p>
+                </div>
+            </div>
+
+            <div class="border-cyber p-4 bg-glass">
+                <h2 class="text-xs font-bold mb-4 opacity-50 uppercase tracking-tighter">// CERT_LOGS</h2>
+                <ul class="text-[10px] space-y-3">
+                    [cite_start]<li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> ETHICAL_HACKING [cite: 39]</li>
+                    [cite_start]<li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> THREAT_MGMT [cite: 40]</li>
+                    [cite_start]<li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> ENDPOINT_SECURITY [cite: 45]</li>
+                </ul>
+            </div>
+
+            <div class="border-cyber p-4 bg-glass">
+                <h2 class="text-xs font-bold mb-2 opacity-50 uppercase tracking-tighter">// LEADERSHIP</h2>
+                [cite_start]<p class="text-[10px] font-bold">Secretary @ Cyber Elites Club [cite: 47, 48]</p>
+                [cite_start]<p class="text-[9px] text-emerald-700 mt-1">Leading weekly workshops and security trend discussions. [cite: 51]</p>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="mt-8 text-[10px] opacity-30 text-center tracking-widest uppercase">
+        End_of_Transmission // 2025 // Shreya_Tadakala
+    </footer>
+</body>
+</html>
