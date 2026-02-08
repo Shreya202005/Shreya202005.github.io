@@ -72,6 +72,7 @@
             display: flex;
             justify-content: center;
             gap: 3rem;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -139,6 +140,7 @@
             gap: 1rem;
             justify-content: center;
             animation: fadeInUp 1.6s ease;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -523,7 +525,6 @@
             }
 
             nav ul {
-                flex-wrap: wrap;
                 gap: 1rem;
             }
 
@@ -531,21 +532,9 @@
                 padding: 3rem 5%;
             }
 
-            .cta-buttons {
-                flex-direction: column;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
-        }
-
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
@@ -585,7 +574,7 @@
     <!-- About Section -->
     <section id="about">
         <h2 class="section-title">About Me</h2>
-        <div class="about-content fade-in">
+        <div class="about-content">
             <div class="about-text">
                 <h3>Cybersecurity Enthusiast & Innovator</h3>
                 <p>
@@ -619,7 +608,7 @@
     <!-- Skills Section -->
     <section id="skills">
         <h2 class="section-title">Technical Arsenal</h2>
-        <div class="skills-grid fade-in">
+        <div class="skills-grid">
             <div class="skill-category">
                 <h3><i class="fas fa-shield-alt"></i> Penetration Testing</h3>
                 <div class="skill-tags">
@@ -694,7 +683,7 @@
     <!-- Experience Section -->
     <section id="experience">
         <h2 class="section-title">Professional Experience</h2>
-        <div class="timeline fade-in">
+        <div class="timeline">
             <div class="timeline-item">
                 <h3>Cybersecurity & Ethical Hacking Intern</h3>
                 <p class="date"><i class="fas fa-building"></i> Codec Technologies | June 2025 - July 2025</p>
@@ -723,7 +712,7 @@
     <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid fade-in">
+        <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
                     <h3><i class="fas fa-shield-virus"></i> DoS Detection System</h3>
@@ -803,7 +792,7 @@
     <!-- Certifications Section -->
     <section id="certifications">
         <h2 class="section-title">Certifications</h2>
-        <div class="cert-grid fade-in">
+        <div class="cert-grid">
             <div class="cert-card">
                 <i class="fas fa-certificate cert-icon"></i>
                 <div>
@@ -842,11 +831,11 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-grid fade-in">
+        <div class="contact-grid">
             <div class="contact-card">
                 <i class="fas fa-envelope"></i>
                 <h3>Email</h3>
-                <a href="/cdn-cgi/l/email-protection#46322722272d272a27352e34233f2706212b272f2a6825292b"><span class="__cf_email__" data-cfemail="e1958085808a808d80928993849880a1868c80888dcf828e8c">[email&#160;protected]</span></a>
+                <a href="mailto:tadakalashreya@gmail.com">tadakalashreya@gmail.com</a>
             </div>
 
             <div class="contact-card">
@@ -874,12 +863,12 @@
         <div class="social-links">
             <a href="https://github.com/Shreya202005" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/shreya-tadakala-3a390a33b/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="/cdn-cgi/l/email-protection#a7d3c6c3c6ccc6cbc6d4cfd5c2dec6e7c0cac6cecb89c4c8ca"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:tadakalashreya@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
         <p>&copy; 2026 Shreya Tadakala. Securing the digital world, one vulnerability at a time.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -894,24 +883,6 @@
             });
         });
 
-        // Scroll Animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-
         // Active Nav Link
         window.addEventListener('scroll', () => {
             let current = '';
@@ -924,3 +895,14 @@
                     current = section.getAttribute('id');
                 }
             });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
