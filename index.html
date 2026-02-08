@@ -3,119 +3,924 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shreya Tadakala | Cybersecurity Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <title>Shreya Tadakala | Cybersecurity Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #00f2ff;
-            --bg: #0d1117;
-            --card: #161b22;
-            --text: #c9d1d9;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        :root {
+            --primary-color: #00f7f7;
+            --secondary-color: #ff0080;
+            --bg-dark: #0a0e27;
+            --bg-light: #1a1f3a;
+            --text-color: #e0e0e0;
+            --accent: #7B2CBF;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
+            background: var(--bg-dark);
+            color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        header {
-            height: 100vh;
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a0e27, #1a1f3a);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,247,247,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 31, 58, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 247, 247, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
             display: flex;
-            flex-direction: column;
             justify-content: center;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            background: radial-gradient(circle at center, #1c2128 0%, #0d1117 100%);
+            padding: 2rem;
+            position: relative;
         }
-        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
-        h1 { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
-        .card {
-            background: var(--card);
-            padding: 30px;
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1.6s ease;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 247, 247, 0.4);
+        }
+
+        .btn-secondary {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-color);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 10%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 1rem auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateX(5px);
+        }
+
+        .stat-card h4 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-card p {
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-light);
+            padding: 2rem;
             border-radius: 15px;
-            border: 1px solid #30363d;
-            transition: 0.3s;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 247, 247, 0.1);
         }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 247, 247, 0.2);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
         .skill-tag {
-            display: inline-block;
-            background: #238636;
-            color: white;
-            padding: 5px 12px;
+            background: rgba(0, 247, 247, 0.1);
+            padding: 0.5rem 1rem;
             border-radius: 20px;
-            margin: 5px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 247, 247, 0.3);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 247, 247, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .timeline-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            position: relative;
+            border-left: 3px solid var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0, 247, 247, 0.2);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item ul {
+            margin-left: 1.5rem;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-light);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 247, 247, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 247, 247, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(0, 247, 247, 0.2), rgba(255, 0, 128, 0.2));
+            padding: 2rem;
+        }
+
+        .project-header h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body p {
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-badge {
+            background: rgba(123, 44, 191, 0.2);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
             font-size: 0.85rem;
         }
-        .btn {
-            text-decoration: none;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 10px 25px;
-            border-radius: 5px;
-            transition: 0.3s;
+
+        .impact {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-top: 1rem;
         }
-        .btn:hover { background: var(--primary); color: var(--bg); }
-        footer { text-align: center; padding: 60px; background: #010409; }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cert-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 247, 247, 0.2);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 247, 247, 0.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 247, 247, 0.2);
+        }
+
+        .contact-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
 
-    <header>
-        <h1>SHREYA TADAKALA</h1>
-        <p style="font-size: 1.2rem;">Cybersecurity Engineer | Ethical Hacker | IoT & Blockchain</p>
-        <p>GPA: 9.0 | Hyderabad, India</p>
-        <br>
-        <a href="#projects" class="btn">View My Work</a>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        <section id="about">
-            <h2 style="border-bottom: 2px solid var(--primary); display: inline-block;">Summary</h2>
-            <p>Specialized in identifying vulnerabilities and securing digital assets. Experienced in OWASP Top 10, Network Traffic Analysis using Wireshark, and building custom security tools with Python.</p>
-        </section>
-
-        <section id="skills" style="margin-top: 60px;">
-            <h2>Technical Stack</h2>
-            <div class="card">
-                <p><strong>Tools:</strong> <span class="skill-tag">Nmap</span> <span class="skill-tag">Wireshark</span> <span class="skill-tag">Burp Suite</span> <span class="skill-tag">Metasploit</span> <span class="skill-tag">Splunk</span> <span class="skill-tag">OWASP ZAP</span></p>
-                <p><strong>Cloud:</strong> <span class="skill-tag">AWS</span> <span class="skill-tag">Azure</span> <span class="skill-tag">GitHub Actions</span></p>
-                <p><strong>Specialties:</strong> <span class="skill-tag">Vulnerability Assessment</span> <span class="skill-tag">Malware Analysis</span> <span class="skill-tag">Digital Forensics</span></p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>SHREYA TADAKALA</h1>
+            <h2>Cybersecurity Professional | Ethical Hacker</h2>
+            <p>Building secure digital futures through penetration testing, cloud security, and ethical hacking</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </a>
+                <a href="https://github.com/Shreya202005" class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-github"></i> View GitHub
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" style="margin-top: 60px;">
-            <h2>Core Projects</h2>
-            <div class="grid">
-                <div class="card" data-tilt>
-                    <h3 style="color: var(--primary);">Web Pentesting Toolkit</h3>
-                    <p>A Python/Flask toolkit automating reconnaissance and HTTP header analysis. Reduced initial scan time by 40%.</p>
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content fade-in">
+            <div class="about-text">
+                <h3>Cybersecurity Enthusiast & Innovator</h3>
+                <p>
+                    I'm a passionate cybersecurity professional pursuing B.Tech in Computer Engineering with a specialization in IoT, Cybersecurity, and Blockchain Technology. With hands-on experience in ethical hacking, vulnerability assessment, and cloud security, I'm committed to making the digital world safer.
+                </p>
+                <p>
+                    As the Secretary of Cyber Elites Club at NSAKCET, I lead a community of 80+ members, organizing technical workshops and cybersecurity events. My expertise spans from web application security testing to network traffic analysis and cloud security monitoring.
+                </p>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <h4>9.0</h4>
+                    <p>CGPA</p>
                 </div>
-                <div class="card" data-tilt>
-                    <h3 style="color: var(--primary);">Cloud Security (CSPM)</h3>
-                    <p>Prototype tool for tracking cloud security posture and visualizing configuration gaps.</p>
+                <div class="stat-card">
+                    <h4>80+</h4>
+                    <p>Club Members</p>
                 </div>
-                <div class="card" data-tilt>
-                    <h3 style="color: var(--primary);">IoT Security</h3>
-                    <p>Researching Blockchain integration to secure decentralized IoT nodes.</p>
+                <div class="stat-card">
+                    <h4>3+</h4>
+                    <p>Certifications</p>
+                </div>
+                <div class="stat-card">
+                    <h4>3+</h4>
+                    <p>Major Projects</p>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Arsenal</h2>
+        <div class="skills-grid fade-in">
+            <div class="skill-category">
+                <h3><i class="fas fa-shield-alt"></i> Penetration Testing</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Kali Linux</span>
+                    <span class="skill-tag">Burp Suite</span>
+                    <span class="skill-tag">Metasploit</span>
+                    <span class="skill-tag">Nmap</span>
+                    <span class="skill-tag">Wireshark</span>
+                    <span class="skill-tag">OWASP ZAP</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-chart-line"></i> SIEM & Monitoring</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Splunk</span>
+                    <span class="skill-tag">Wazuh</span>
+                    <span class="skill-tag">SentinelOne</span>
+                    <span class="skill-tag">Snort</span>
+                    <span class="skill-tag">Network Monitoring</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-cloud"></i> Cloud Security</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">Red Hat</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Programming</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Bash</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-lock"></i> Security Domains</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Vulnerability Analysis</span>
+                    <span class="skill-tag">Incident Response</span>
+                    <span class="skill-tag">Malware Analysis</span>
+                    <span class="skill-tag">Digital Forensics</span>
+                    <span class="skill-tag">IoT Security</span>
+                    <span class="skill-tag">Blockchain</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-robot"></i> Machine Learning</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">scikit-learn</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Anomaly Detection</span>
+                    <span class="skill-tag">Network Traffic Analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline fade-in">
+            <div class="timeline-item">
+                <h3>Cybersecurity & Ethical Hacking Intern</h3>
+                <p class="date"><i class="fas fa-building"></i> Codec Technologies | June 2025 - July 2025</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Conducted comprehensive vulnerability assessments identifying SQLi, XSS, and authentication flaws</li>
+                    <li><i class="fas fa-check-circle"></i> Simulated real-world attacks using Nmap, Nessus, and Metasploit frameworks</li>
+                    <li><i class="fas fa-check-circle"></i> Performed network traffic analysis with Wireshark to detect suspicious patterns</li>
+                    <li><i class="fas fa-check-circle"></i> Mapped findings to OWASP Top 10 and MITRE ATT&CK frameworks</li>
+                    <li><i class="fas fa-check-circle"></i> Authored detailed security reports with actionable remediation steps</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Secretary, Cyber Elites Club</h3>
+                <p class="date"><i class="fas fa-users"></i> NSAKCET | August 2025 - January 2026</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Led cybersecurity organization with 80+ active members</li>
+                    <li><i class="fas fa-check-circle"></i> Coordinated technical workshops, guest sessions, and cybersecurity events</li>
+                    <li><i class="fas fa-check-circle"></i> Managed communication between speakers, faculty, and team members</li>
+                    <li><i class="fas fa-check-circle"></i> Organized blockchain and cybersecurity-focused programs</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid fade-in">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-shield-virus"></i> DoS Detection System</h3>
+                </div>
+                <div class="project-body">
+                    <p>Engineered a machine learning-based DoS/DDoS detection system to identify zero-day attack patterns and sophisticated distributed threats in real-time.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">scikit-learn</span>
+                        <span class="tech-badge">Random Forest</span>
+                        <span class="tech-badge">Wireshark</span>
+                        <span class="tech-badge">Scapy</span>
+                    </div>
+                    <ul>
+                        <li>Trained on 100K+ network flows from CICIDS2017 dataset</li>
+                        <li>Engineered 25+ traffic features (packet rate, flow duration, entropy metrics)</li>
+                        <li>Real-time alert system with SOC integration</li>
+                        <li>Detected 5 novel zero-day attack patterns</li>
+                    </ul>
+                    <p class="impact"><i class="fas fa-chart-line"></i> Impact: 94.7% accuracy | 96.7% faster detection (15min → 30sec) | 2.3% false positive rate</p>
+                    <a href="https://github.com/Shreya202005/Dos-Detection" target="_blank" class="btn" style="margin-top: 1rem;">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-bug"></i> Web Application Pentesting Toolkit</h3>
+                </div>
+                <div class="project-body">
+                    <p>Developed a comprehensive Python-based security testing tool with Flask web interface for automated vulnerability assessment.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">Nmap</span>
+                    </div>
+                    <ul>
+                        <li>Automated port scanning and reconnaissance</li>
+                        <li>HTTP header analysis module</li>
+                        <li>Vulnerability detection system</li>
+                        <li>PDF and text report generation</li>
+                    </ul>
+                    <p class="impact"><i class="fas fa-chart-line"></i> Impact: Reduced reconnaissance time by 40%</p>
+                    <a href="https://github.com/Shreya202005/Web-Pentesting-Toolkit" target="_blank" class="btn" style="margin-top: 1rem;">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fas fa-cloud-upload-alt"></i> Cloud Security Posture Management Tool</h3>
+                </div>
+                <div class="project-body">
+                    <p>Built a CSPM prototype for tracking and visualizing cloud security configurations with centralized logging.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">Cloud APIs</span>
+                    </div>
+                    <ul>
+                        <li>Security posture visualization dashboard</li>
+                        <li>Automated security checks</li>
+                        <li>Centralized logging system</li>
+                        <li>Configuration monitoring</li>
+                    </ul>
+                    <p class="impact"><i class="fas fa-chart-line"></i> Impact: Reduced manual tracking by 50%</p>
+                    <a href="https://github.com/Shreya202005/Cloud-Security-Posture-Management" target="_blank" class="btn" style="margin-top: 1rem;">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-grid fade-in">
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <div>
+                    <h3>Cisco Ethical Hacking</h3>
+                    <p>Cisco Networking Academy</p>
+                    <a href="https://www.credly.com/badges/d13f0a58-dac4-4f3a-b19e-f16f02ee0f16/public_url" target="_blank" class="btn" style="margin-top: 0.5rem; font-size: 0.9rem; padding: 8px 20px;">
+                        <i class="fas fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="cert-card">
+                <i class="fas fa-shield-alt cert-icon"></i>
+                <div>
+                    <h3>Cyber Threat Management</h3>
+                    <p>Professional Certification</p>
+                    <a href="https://www.credly.com/badges/557c0ff2-495c-4e0f-b209-1dcd3eb67a0a/public_url" target="_blank" class="btn" style="margin-top: 0.5rem; font-size: 0.9rem; padding: 8px 20px;">
+                        <i class="fas fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="cert-card">
+                <i class="fas fa-network-wired cert-icon"></i>
+                <div>
+                    <h3>Network Configurations</h3>
+                    <p>Network Security Fundamentals</p>
+                    <a href="https://www.credly.com/badges/732e04b5-1922-48c4-9b03-9fdf7e8dd71d/public_url" target="_blank" class="btn" style="margin-top: 0.5rem; font-size: 0.9rem; padding: 8px 20px;">
+                        <i class="fas fa-external-link-alt"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-grid fade-in">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <a href="/cdn-cgi/l/email-protection#46322722272d272a27352e34233f2706212b272f2a6825292b"><span class="__cf_email__" data-cfemail="e1958085808a808d80928993849880a1868c80888dcf828e8c">[email&#160;protected]</span></a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <a href="tel:+918247390896">+91 82473 90896</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/in/shreya-tadakala-3a390a33b/" target="_blank">Connect with me</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <a href="https://github.com/Shreya202005" target="_blank">View my work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>Email: tadakalashreya@gmail.com | LinkedIn: shreya-tadakala-3a390a33b</p>
-        <img src="https://komarev.com/ghpvc/?user=Shreya202005&label=PORTFOLIO+VIEWS&color=00d4ff&style=flat-square" alt="visitor count">
-        <p>© 2026 Shreya Tadakala</p>
+        <div class="social-links">
+            <a href="https://github.com/Shreya202005" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/shreya-tadakala-3a390a33b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="/cdn-cgi/l/email-protection#a7d3c6c3c6ccc6cbc6d4cfd5c2dec6e7c0cac6cecb89c4c8ca"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2026 Shreya Tadakala. Securing the digital world, one vulnerability at a time.</p>
     </footer>
 
-    <script>
-        VanillaTilt.init(document.querySelectorAll(".card"), {
-            max: 10,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.3,
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
-    </script>
-</body>
-</html>
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Active Nav Link
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
